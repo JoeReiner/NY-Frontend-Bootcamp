@@ -1,0 +1,11 @@
+git -v = Check git version
+git init = initiate git repo
+git config --global user.name "username"
+git config --email
+git status = Check status of files in staging area
+git commit -m = add message
+git log = Logs out history / -git log --oneline
+Camel Case = Every new word is capitalized
+git add "filename" = adding files to staging area
+git add .
+bit rm --cached filename = remove file from staging area
