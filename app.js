@@ -1,51 +1,49 @@
-// Objects
+const form = document.getElementById("myForm");
+ const nameInput = document.getElementById('name');
+ const emailInput = document.getElementById("email");
+const nameError = document.getElementById("nameError");
+const emailError = document.getElementById("emailError");
 
-const person = {
-    firstName: 'Jane',
-    lastName: 'Doe',
-    age: 25,
-    hobbies: ['reading', 'coding', 'hiking'],
 
-    greet: function (){
-        console.log('hello, my name is', this.firstname, 'Nice to meet you.');
+form.addEventListener("submit", handleSubmit);
+
+function handleSubmit(event) {
+    event.preventDefault(); //prevent form from submitting right away
+
+    const isValid = validateForm();
+
+    if (isValid) {
+        //Perform submission
+        console.log("Form submitted successfully");
+        form.reset()
+        nameError.textContent = "";
+        emailError.textContent = "";
     }
-};
 
-// Accessing Object Properties
+    console.log(isValid)
 
-console.log(person.lastName);
-console.log(person.age);
-
-// Modifying Object Properties
-person.lastName = 'Smith';
-console.log(person.lastName);
-
-// Accessing Object Methods
-person.greet();
-
-// Adding new Propertiues to the Object
-person.nationality = 'American'
-console.log(person.nationality);
-
-// Addinbg New methoids to the Object
-person.introduce = function () {
-    // Template Literals
-    console.log(`I am ${this.firstName} ${this.lastname}. I am ${this.age}.`);
-};
-person.introduce();
-
-// Nesting Objects
-const address = {
-    street:'123 Main St',
-    city:'New York',
-    country: 'USA'
 }
 
-person.location = address
-console.log(person.location.street);
+// form inpout validation
+function validateForm() {
+    const nameValue = nameInput.ariaValueMax.trim();
+    const emailValue = emailInput.ariaValueMax.trim();
+    let isValid = true
 
-// Object Destructuring 
-const { firstName, lastName, age } = person;
-console.log(firstName);
+    if (nameValue === "") {
+        nameError.textContent = "Name is required";
+        isValid = false;
+    } else {
+        emailError.textContent = "";
+    }
 
-console.log(person.hobbies);
+    if (emailValue === "") {
+        emailError.textContent = "Email is required";
+        isValid = false;
+    } else {
+        emailError.textContent = "";
+    }
+
+    return isValid;
+
+}
