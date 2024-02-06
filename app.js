@@ -1,49 +1,20 @@
-const form = document.getElementById("myForm");
- const nameInput = document.getElementById('name');
- const emailInput = document.getElementById("email");
-const nameError = document.getElementById("nameError");
-const emailError = document.getElementById("emailError");
+console.log("Hello OOP!");
 
-
-form.addEventListener("submit", handleSubmit);
-
-function handleSubmit(event) {
-    event.preventDefault(); //prevent form from submitting right away
-
-    const isValid = validateForm();
-
-    if (isValid) {
-        //Perform submission
-        console.log("Form submitted successfully");
-        form.reset()
-        nameError.textContent = "";
-        emailError.textContent = "";
+class Vehicle {
+    constructor(make, model) {
+      this.make = make;
+      this.model = model;
     }
-
-    console.log(isValid)
-
-}
-
-// form inpout validation
-function validateForm() {
-    const nameValue = nameInput.ariaValueMax.trim();
-    const emailValue = emailInput.ariaValueMax.trim();
-    let isValid = true
-
-    if (nameValue === "") {
-        nameError.textContent = "Name is required";
-        isValid = false;
-    } else {
-        emailError.textContent = "";
+  
+    start() {
+      return `${this.make} ${this.model} is starting the engine.`;
     }
-
-    if (emailValue === "") {
-        emailError.textContent = "Email is required";
-        isValid = false;
-    } else {
-        emailError.textContent = "";
+  
+    stop() {
+      return `${this.make} ${this.model} is stopping the engine.`;
     }
-
-    return isValid;
-
-}
+  }
+  
+  const myCar = new Vehicle("Toyota", "Camry");
+  console.log(myCar.start());       // Output: Toyota Camry is starting the engine.
+  console.log(myCar.stop());        // Output: Toyota Camry is stopping the engine.
